@@ -16,7 +16,7 @@ jobs:
                 command: |
                     wget -O /bin/hadolint https://github.com/hadolint/hadolint/releases/download/v1.17.5/hadolint-linux-x86_64
                     chmod +x /bin/hadolint
-                    make install
+                    make all
             - save_cache:
                 paths:
                     - ./venv
@@ -25,4 +25,4 @@ jobs:
                 name: Run Lint
                 command: |
                     . venv/bin/activate
-                    make lint
+                    make all
