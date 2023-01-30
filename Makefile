@@ -1,21 +1,16 @@
 setup:
-	python3 -m venv ~/.docker-build
+	python3 -m venv ~/.udacity-devops
 
 install:
-	pip install --upgrade pip && pip install -r requirements.txt
-
-validate-circleci:
-    circleci config process .circleci/config.yml
-
-run-circleci-local:
-    circleci local execute
+	pip install --upgrade pip &&\
+        pip install -r requirements.txt
 
 test:
-	#python -m pytest -vv --cov=myrepolib tests/*.py
-	#python -m pytest --nbval notebook.ipynb
+    #python -m pytest -vv --cov=myrepolib tests/*.py
+    #python -m pytest --nbval notebook.ipynb
 
 lint:
-	hadolint Dockerfile 
-	pylint --disable=R,C,W1203 app.py
+	hadolint Dockerfile
+	pylint --disable=R,C,W1203 *.py
 
-all: install lint test
+all: setup install lint test
